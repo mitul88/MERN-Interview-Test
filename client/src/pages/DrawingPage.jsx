@@ -102,10 +102,6 @@ const resizedCoordinates = (clientX, clientY, position, coordinates) => {
   }
 };
 
-const saveProgress = (event) => {
-  event.preventDefault();
-  alert("progress saved");
-};
 const DrawingPage = () => {
   const [elements, setElements] = useState([]);
   const [action, setAction] = useState("none");
@@ -223,6 +219,25 @@ const DrawingPage = () => {
     setSelectedElement(null);
   };
 
+  const saveProgress = (event) => {
+    event.preventDefault();
+    if (elements.length === 0) {
+      alert("nothing to save");
+      return;
+    }
+    let data = [];
+    elements.forEach((element) =>
+      data.push({
+        type: element.type,
+        x1: element.x1,
+        y1: element.y1,
+        x2: element.x2,
+        y2: element.y2,
+      })
+    );
+    alert("progress saved");
+    console.log(data);
+  };
   return (
     <div className=" bg-body-secondary min-vh-100">
       <div className="container-fluid">

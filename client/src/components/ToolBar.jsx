@@ -41,12 +41,12 @@ const ToolBar = ({ tool, setTool, saveProgress }) => {
           </label>
         </div>
         <div>
-          <btton
+          <button
             className="btn btn-primary btn-sm"
             onClick={(event) => saveProgress(event)}
           >
             Save Progress
-          </btton>
+          </button>
         </div>
       </div>
     </div>
