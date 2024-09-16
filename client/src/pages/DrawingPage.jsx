@@ -102,6 +102,10 @@ const resizedCoordinates = (clientX, clientY, position, coordinates) => {
   }
 };
 
+const saveProgress = (event) => {
+  event.preventDefault();
+  alert("progress saved");
+};
 const DrawingPage = () => {
   const [elements, setElements] = useState([]);
   const [action, setAction] = useState("none");
@@ -223,7 +227,7 @@ const DrawingPage = () => {
     <div className=" bg-body-secondary min-vh-100">
       <div className="container-fluid">
         <div className="row my-3">
-          <ToolBar tool={tool} setTool={setTool} />
+          <ToolBar tool={tool} setTool={setTool} saveProgress={saveProgress} />
         </div>
         <div className="row">
           <div className="bg-light p-1 px-auto">

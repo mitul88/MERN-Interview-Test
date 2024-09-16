@@ -1,6 +1,6 @@
 import React from "react";
 
-const ToolBar = ({ tool, setTool }) => {
+const ToolBar = ({ tool, setTool, saveProgress }) => {
   return (
     <div className="p-3 bg-light">
       <div className="d-flex flex-row align-items-center gap-4">
@@ -39,6 +39,14 @@ const ToolBar = ({ tool, setTool }) => {
           <label className="form-check-label" htmlFor="rectangle">
             Rectangle
           </label>
+        </div>
+        <div>
+          <btton
+            className="btn btn-primary btn-sm"
+            onClick={(event) => saveProgress(event)}
+          >
+            Save Progress
+          </btton>
         </div>
       </div>
     </div>
