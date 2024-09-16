@@ -2,6 +2,7 @@ import React, { useState, useLayoutEffect } from "react";
 import rough from "roughjs/bundled/rough.esm";
 
 import ToolBar from "../components/ToolBar";
+import { saveDrawings } from "../utils/http";
 
 const generator = rough.generator();
 
@@ -244,8 +245,12 @@ const DrawingPage = () => {
       title,
       shapes,
     };
-    console.log(data);
-    alert("progress saved");
+    const response = saveDrawings(data);
+    if (response.status === 201) {
+      alert("progress saved");
+    } else {
+      alert("something went wrong");
+    }
   };
 
   const clearProgress = () => {
