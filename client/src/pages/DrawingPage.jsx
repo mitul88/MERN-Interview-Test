@@ -107,6 +107,7 @@ const DrawingPage = () => {
   const [action, setAction] = useState("none");
   const [tool, setTool] = useState("line");
   const [selectedElement, setSelectedElement] = useState(null);
+  const [title, setTitle] = useState("");
 
   useLayoutEffect(() => {
     const canvas = document.getElementById("canvas");
@@ -225,9 +226,13 @@ const DrawingPage = () => {
       alert("nothing to save");
       return;
     }
-    let data = [];
+    if (title === "") {
+      alert("Please create a title");
+      return;
+    }
+    let shapes = [];
     elements.forEach((element) =>
-      data.push({
+      shapes.push({
         type: element.type,
         x1: element.x1,
         y1: element.y1,
@@ -235,14 +240,30 @@ const DrawingPage = () => {
         y2: element.y2,
       })
     );
-    alert("progress saved");
+    let data = {
+      title,
+      shapes,
+    };
     console.log(data);
+    alert("progress saved");
+  };
+
+  const clearProgress = () => {
+    setElements([]);
+    setSelectedElement(null);
   };
   return (
     <div className=" bg-body-secondary min-vh-100">
       <div className="container-fluid">
         <div className="row my-3">
-          <ToolBar tool={tool} setTool={setTool} saveProgress={saveProgress} />
+          <ToolBar
+            tool={tool}
+            setTool={setTool}
+            saveProgress={saveProgress}
+            title={title}
+            setTitle={setTitle}
+            clearProgress={clearProgress}
+          />
         </div>
         <div className="row">
           <div className="bg-light p-1 px-auto">
