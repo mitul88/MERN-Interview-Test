@@ -1,5 +1,5 @@
 export const saveDrawings = async (postData) => {
-  const response = await fetch("http://localhost:4000/api/drawing", {
+  const response = await fetch("http://localhost:3001/api/drawing/create", {
     method: "POST",
     body: JSON.stringify(postData),
     headers: {
@@ -15,6 +15,5 @@ export const saveDrawings = async (postData) => {
   }
 
   const { data } = await response.json();
-
   return data;
 };

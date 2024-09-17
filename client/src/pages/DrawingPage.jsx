@@ -221,7 +221,7 @@ const DrawingPage = () => {
     setSelectedElement(null);
   };
 
-  const saveProgress = (event) => {
+  const saveProgress = async (event) => {
     event.preventDefault();
     if (elements.length === 0) {
       alert("nothing to save");
@@ -245,12 +245,14 @@ const DrawingPage = () => {
       title,
       shapes,
     };
-    const response = saveDrawings(data);
-    if (response.status === 201) {
-      alert("progress saved");
-    } else {
-      alert("something went wrong");
-    }
+    const response = await saveDrawings(data);
+    console.log(response);
+    // alert("progress saved");
+    // if (response.status === 201) {
+    //   alert("progress saved");
+    // } else {
+    //   alert("something went wrong");
+    // }
   };
 
   const clearProgress = () => {
